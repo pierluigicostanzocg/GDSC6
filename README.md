@@ -11,19 +11,6 @@ With an overwhelming number of species, identifying insects proves to be an exce
 # Our solution
 ###### This repository contains the solution by the Team Gandalf the Data-Wise and Aragorn the Code-Master
 
-## List of Directories
-
-- Directory 1
-  - Subdirectory A
-  - Subdirectory B
-- Directory 2
-  - Subdirectory X
-  - Subdirectory Y
-  - Subdirectory Z
-- Directory 3
-- ...
-
-
 ### Getting started
 ____________________
 ```
