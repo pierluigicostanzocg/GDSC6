@@ -372,7 +372,7 @@ if __name__ == "__main__":
         learning_rate=args.learning_rate,                    # learning rate
         optim="adamw_torch",                                 # optimizer
         # warmup_ratio=0.1,                                  # warm up to allow the optimizer to collect the statistics of gradients
-        logging_steps=10,                                    # number of steps for logging the training process - one step is one batch; float denotes ratio of the global training steps
+        logging_steps=1,                                     # number of steps for logging the training process - one step is one batch; float denotes ratio of the global training steps
         load_best_model_at_end = True,                       # whether to load or not the best model at the end of the training
         metric_for_best_model="eval_loss",                   # claiming that the best model is the one with the lowest loss on the val set
         save_strategy = 'epoch',                             # saving is done at the end of each epoch
