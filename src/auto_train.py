@@ -28,33 +28,6 @@ from gdsc_eval import compute_metrics, make_predictions            # functions t
 from typing import List, Dict, Union, Any, Optional                # for type hints
 import random
 
-def get_feature_extractor(model_name: str, 
-                          train_dataset_mean: Optional[float] = None, 
-                          train_dataset_std: Optional[float] = None,
-                          sr: int = 44100) -> AutoFeatureExtractor:
-    """
-    Retrieves a feature extractor for audio signal processing.
-
-    Args:
-        model_name (str): The name of the pre-trained model to use.
-        train_dataset_mean (float, optional): The mean value of the training dataset. Defaults to None.
-        train_dataset_std (float, optional): The standard deviation of the training dataset. Defaults to None.
-
-    Returns:
-        AutoFeatureExtractor: An instance of the AutoFeatureExtractor class.
-
-    """
-    if all((train_dataset_mean, train_dataset_std)):
-        feature_extractor = AutoFeatureExtractor.from_pretrained(model_name, mean=train_dataset_mean, std=train_dataset_std, sampling_rate=sr)
-        logger.info(f" feature extractor loaded with dataset mean: {train_dataset_mean} and standard deviation: {train_dataset_std}")
-    else:
-        feature_extractor = AutoFeatureExtractor.from_pretrained(model_name, sampling_rate=sr)
-        logger.info(" at least one of the optional arguments (mean, std) is missing")
-        logger.info(f" feature extractor loaded with default dataset mean: {feature_extractor.mean} and standard deviation: {feature_extractor.std}")
-        
-    return feature_extractor
-
-
 def preprocess_function(examples: Dict[str, Any], path: bool = 1) -> Dict[str, Any]:
     """
     Preprocesses audio data for audio classification task.
@@ -327,7 +300,7 @@ if __name__ == "__main__":
 
     
     # If mean or std are not passed it will load Featue Extractor with the default settings.
-    feature_extractor = get_feature_extractor(args.model_name, sr=args.sampling_rate)
+    feature_extractor = AutoFeatureExtractor.from_pretrained(args.model_name, do_normalize=True, return_attention_mask=False, sampling_rate=args.sampling_rate, num_mel_bins=128)
 
     # creating validation and test datasets
     val_dataset = load_dataset("audiofolder", data_dir=val_path).get('train')
