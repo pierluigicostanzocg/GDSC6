@@ -1,4 +1,4 @@
-# GDSC6
+# GDSC6 - from Gandalf the Data-Wise and Aragorn the Code-Master
 
 ### Capgemini Global Data Science Challenge (GDSC) for a sustainable future!
 
