@@ -407,7 +407,6 @@ if __name__ == "__main__":
                                                               remove_columns=["audio"],
                                                               batched=False,
                                                               batch_size=1)
-    test_dataset_encoded = test_dataset_encoded.map(lambda x: make_predictions(x['input_values'], model, device), batched = True, batch_size=args.eval_batch_size)   
     
     # Keeping only the important columns for the csv file
     test_dataset_encoded_pred_chunks_pandas_df = test_dataset_encoded_pred_chunks.to_pandas()[['file_name', 'predicted_class_id']]
