@@ -16,7 +16,7 @@ GDSC6 invites participants to create a data and AI model for recognizing specifi
 
 **3) Inference:** At inference time, each audio is divided into chunks of max 11 seconds with 2-second time step shift. The final class prediction is determined by selecting the chunk with the highest score value.
 
-**4) Pruning:** To prevent overfitting, we reduced the complexity of the AST model to a simpler one via model pruning layer technique. It ensure a better generalization. The standard AST model has 12 Multi-Head attention layers which we reduced to 8.
+**4) Pruning:** To prevent overfitting, we reduced the complexity of the AST model to a simpler one via model pruning layer technique. It ensure a better generalization. The standard AST model has 12 Multi-Head attention layers which we reduced to 8. The model is much faster and lighter at both training and inference time.
 
 ### Getting started
 ____________________
