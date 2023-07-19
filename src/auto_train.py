@@ -26,6 +26,7 @@ import numpy as np
 from preprocessing import preprocess_audio_arrays                  # functions to preprocess the dataset with AutoFeatureExtractor
 from gdsc_eval import compute_metrics, make_predictions            # functions to create predictions and evaluate them
 from typing import List, Dict, Union, Any, Optional                # for type hints
+import random
 
 def get_feature_extractor(model_name: str, 
                           train_dataset_mean: Optional[float] = None, 
