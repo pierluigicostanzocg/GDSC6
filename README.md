@@ -10,13 +10,13 @@ GDSC6 invites participants to create a data and AI model for recognizing specifi
 # Solution
 ### Our solution is built upon four key pillars, each playing a crucial role in its effectiveness:
 
-**1) Data Augmentation Chunking:** We created a custom function for chunking the audio files with random lengths and position, to diversify and optimize the flow of information during training - as an augmentation technique.
+**1) Data Augmentation Chunking:** We created a custom function for chunking the audio files with random lengths and position, to diversify and optimize the flow of information during training - as augmentation technique.
 
-**2) Balanced Dataset:** The training dataset has been balanced with a generator for ensuring fair representation of different audio instances for each classes.
+**2) Balanced Dataset:** The training dataset has been balanced with a generator for ensuring fair representation of the different audio instances for each class label.
 
 **3) Inference:** At inference time, each audio is divided into chunks of max 11 seconds with 2-second time step shift. The final class prediction is determined by selecting the chunk with the highest score value.
 
-**4) Pruning:** To prevent overfitting, we reduced the complexity of the AST model to a simpler one via model pruning layer technique. It ensure a better generalization. The standard AST model has 12 Multi-Head attention layers which we reduce it to 8.
+**4) Pruning:** To prevent overfitting, we reduced the complexity of the AST model to a simpler one via model pruning layer technique. It ensure a better generalization. The standard AST model has 12 Multi-Head attention layers which we reduced to 8.
 
 ### Getting started
 ____________________
