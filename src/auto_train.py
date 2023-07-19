@@ -61,7 +61,7 @@ def preprocess_function(examples: Dict[str, Any], path: bool = 1) -> Dict[str, A
         return_attention_mask=False,
     )
 
-    # Include 'file_name' field in the output if 'path' is set to 1.
+    # Include 'file_name' key in the output if 'path' is set to 1.
     if path:
         inputs['file_name'] = [e['path'].split('/')[-1] for e in examples['audio']]
 
