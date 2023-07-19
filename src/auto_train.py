@@ -192,8 +192,8 @@ def chunk_pred(example: np.ndarray) -> List[np.ndarray]:
     if e_len > MAX_DURATION: #if length of audio is more than MAX_DURATION seconds, divide the audio to chunks
         min_len = min(360, e_len-11) #min possible seconds
         chunk_len = list(range(0, min_len, 2)) #how many seconds
-        return [e[MODEL_SAMPLING_RATE*r:MODEL_SAMPLING_RATE*(MAX_DURATION+r)] for r in chunk_len]
-    return [e[:MODEL_SAMPLING_RATE*MAX_DURATION]]
+        return [example[MODEL_SAMPLING_RATE*r:MODEL_SAMPLING_RATE*(MAX_DURATION+r)] for r in chunk_len]
+    return [example[:MODEL_SAMPLING_RATE*MAX_DURATION]]
 
 def preprocess_function_pred_chunks(examples: Dict[str, Any], model: torch.nn.Module) -> Dict[str, Any]:
 
