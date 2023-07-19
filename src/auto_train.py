@@ -84,10 +84,7 @@ def chunk_aug(example: np.ndarray) -> np.ndarray:
         numpy.ndarray: A 1-D numpy array representing the selected chunk from the input audio signal 'example'. The maximum duration of the chunk is MAX_DURATION seconds, but it may be shorter if 'example' is not long enough.
 
     """
-
-    if not isinstance(example, np.ndarray) or len(example) == 0:
-      raise ValueError("Input 'example' must be a non-empty numpy.ndarray.")
-
+    
     e_len = int(example.shape[0]/MODEL_SAMPLING_RATE) #length of audio
     min_len = min([2, e_len]) #min possible seconds
     max_len = min([MAX_DURATION, e_len]) #max possible seconds
