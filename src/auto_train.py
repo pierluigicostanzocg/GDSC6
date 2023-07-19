@@ -262,6 +262,8 @@ if __name__ == "__main__":
     set_seed(42)                                                                           # for model reproducibility
 
     parser = argparse.ArgumentParser()
+    if 'SM_MODEL_DIR' not in os.environ: os.environ['SM_MODEL_DIR'] = ''                   # for compatibility out of sagemaker
+    if 'SM_CHANNEL_DATA' not in os.environ: os.environ['SM_CHANNEL_DATA'] = ''             # for compatibility out of sagemaker
 
     # hyperparameters sent from our jupyter notebook are passed as command-line arguments to the script
     # preprocessing hyperparameters
