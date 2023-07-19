@@ -274,7 +274,7 @@ if __name__ == "__main__":
     
     # training hyperparameters
     parser.add_argument("--model_name", type=str)                                          # name of the pretrained model from HuggingFace
-    parser.add_argument("--learning_rate", type=float, default=5e-5)                       # learning rate
+    parser.add_argument("--learning_rate", type=float, default=3e-5)                       # learning rate
     parser.add_argument("--epochs", type=int, default=1)                                   # number of training epochs 
     parser.add_argument("--train_batch_size", type=int, default=4)                         # training batch size
     parser.add_argument("--eval_batch_size", type=int, default=4)                          # evaluation batch size
