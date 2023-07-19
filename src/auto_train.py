@@ -23,7 +23,7 @@ from datasets import load_dataset, Audio, Dataset                  # required to
 import pandas as pd                                                # home of the DataFrame construct, _the_ most important object for Data Science
 import numpy as np
 from preprocessing import preprocess_audio_arrays                  # functions to preprocess the dataset with AutoFeatureExtractor
-from gdsc_eval import compute_metrics, make_predictions            # functions to create predictions and evaluate them
+from gdsc_eval import compute_metrics                              # function to evaluate predictions
 from typing import List, Dict, Union, Any, Optional                # for type hints
 import random
 
