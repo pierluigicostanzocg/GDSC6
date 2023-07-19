@@ -9,7 +9,6 @@ import sys                                                        # to access to
 import argparse                                                   # to parse arguments from passed in the hyperparameters
 import os                                                         # to manage environmental variables
 import json                                                       # to open the json file with labels
-import math
 from transformers import (                                        # required classes to perform the model training and implement early stopping
     AutoFeatureExtractor, 
     AutoModelForAudioClassification, 
@@ -36,19 +35,19 @@ def preprocess_function(examples: Dict[str, Any], path: bool = 1) -> Dict[str, A
     -----------
         examples: dict
                   A dictionary containing the input examples, where the 'audio' key corresponds to the audio data.
-                  Each audio example should have a 'path' and 'array' field.
+                  Each audio example should have a 'path' and 'array' key.
         path: int (optional)
-                   An integer flag indicating whether to include the 'file_name' field in the output.
-                   Default is 1, which includes the 'file_name' field. Set to 0 to exclude it.
+                   An integer flag indicating whether to include the 'file_name' key in the output.
+                   Default is 1, which includes the 'file_name' key. Set to 0 to exclude it.
 
     Returns:
     --------
         dict: A dictionary containing the preprocessed inputs for audio classification.
-              The returned dictionary includes the following fields:
+              The returned dictionary includes the following:
               - 'input_values': The audio arrays preprocessed by the feature extractor, truncated to MAX_DURATION seconds.
               - 'label' (optional): The true labels of audio arrays.
-              - 'attention_mask' (optional): If 'return_attention_mask' is True in the feature extractor, this field will be present.
-              - 'file_name' (optional): If 'path' is set to 1, this field contains the filenames extracted from the 'path' field of input examples.
+              - 'attention_mask' (optional): If 'return_attention_mask' is True in the feature extractor, this key will be present.
+              - 'file_name' (optional): If 'path' is set to 1, this key contains the filenames extracted from the 'path' key of input examples.
     """
 
     # Extract audio arrays from the input examples and truncate them to MAX_DURATION seconds.
@@ -160,7 +159,7 @@ def chunk_pred(example: np.ndarray) -> List[np.ndarray]:
     """
     e_len = int(example.shape[0]/MODEL_SAMPLING_RATE)
     if e_len > MAX_DURATION: #if length of audio is more than MAX_DURATION seconds, divide the audio to chunks
-        min_len = min(360, e_len-11) #min possible seconds
+        min_len = min(360, e_len-MAX_DURATION) #min possible seconds
         chunk_len = list(range(0, min_len, 2)) #how many seconds
         return [example[MODEL_SAMPLING_RATE*r:MODEL_SAMPLING_RATE*(MAX_DURATION+r)] for r in chunk_len]
     return [example[:MODEL_SAMPLING_RATE*MAX_DURATION]]
