@@ -26,6 +26,7 @@ With an overwhelming number of species, identifying insects proves to be an exce
 
 ### Getting started
 ____________________
+```
 ├── notebooks/
 │   ├── Biodiversity_Buzz_Detection_Model_AWS_placeholder.ipynb
 │   └── Biodiversity_Buzz_Detection_Model_placeholder.ipynb
@@ -38,7 +39,7 @@ ____________________
 │   └── gdsc_utils.py 
 ├── .gitignore
 └── README.md
-
+```
 #### Required libraries
 ```python
 pip install datasets
