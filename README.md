@@ -22,8 +22,8 @@ GDSC6 invites participants to create a data and AI model for recognizing specifi
 ____________________
 ```
 ├── notebooks/
-│   ├── Biodiversity_Buzz_Detection_Model_AWS_placeholder.ipynb
-│   └── Biodiversity_Buzz_Detection_Model_placeholder.ipynb
+│   ├── Biodiversity_Buzz_Detection_Model_AWS.ipynb
+│   └── Biodiversity_Buzz_Detection_Model.ipynb
 ├── src/
 │   ├── auto_train.py
 │   ├── config.py
