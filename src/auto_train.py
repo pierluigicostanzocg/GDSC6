@@ -292,6 +292,7 @@ if __name__ == "__main__":
 
     MAX_DURATION = 11                                                                      # max duration in  of the audio files (generally to pass to the feature extractor - it speed up the processing by 10x)
     MODEL_SAMPLING_RATE = args.sampling_rate
+    MY_PATH = args.data_channel
     
     train_path = f"{args.data_channel}/{args.train_dir}"   # directory of our training dataset on the instance
     val_path = f"{args.data_channel}/{args.val_dir}"       # directory of our validation dataset on the instance
