@@ -260,7 +260,7 @@ def preprocess_function_pred_chunks(examples: Dict[str, Any], model: torch.nn.Mo
 if __name__ == "__main__":
     random.seed(42)                                                                        # for model reproducibility
     set_seed(42)                                                                           # for model reproducibility
-    MAX_DURATION = 11                                                                      # max duration in  of the audio files (generally to pass to the feature extractor - it speed up the processing by 10x)
+
     parser = argparse.ArgumentParser()
 
     # hyperparameters sent from our jupyter notebook are passed as command-line arguments to the script
@@ -273,9 +273,9 @@ if __name__ == "__main__":
     # training hyperparameters
     parser.add_argument("--model_name", type=str)                                          # name of the pretrained model from HuggingFace
     parser.add_argument("--learning_rate", type=float, default=5e-5)                       # learning rate
-    parser.add_argument("--epochs", type=int, default=4)                                   # number of training epochs 
-    parser.add_argument("--train_batch_size", type=int, default=32)                        # training batch size
-    parser.add_argument("--eval_batch_size", type=int, default=64)                         # evaluation batch size
+    parser.add_argument("--epochs", type=int, default=1)                                   # number of training epochs 
+    parser.add_argument("--train_batch_size", type=int, default=4)                         # training batch size
+    parser.add_argument("--eval_batch_size", type=int, default=4)                          # evaluation batch size
     parser.add_argument("--gradient_accumulation_steps", type=int, default=8)              # the number of gradient accumulation steps to be used during training.
     parser.add_argument("--num_hidden_layers", type=int, default=8)                        # number of hidden layers to prune the model
     parser.add_argument("--patience", type=int, default=2)                                 # early stopping - how many epoch without improvement will stop the training 
@@ -287,7 +287,9 @@ if __name__ == "__main__":
     
      
     args, _ = parser.parse_known_args()                    # parsing arguments from the notebook
-    
+
+    MAX_DURATION = 11                                                                      # max duration in  of the audio files (generally to pass to the feature extractor - it speed up the processing by 10x)
+    MODEL_SAMPLING_RATE = args.sampling_rate
     
     train_path = f"{args.data_channel}/{args.train_dir}"   # directory of our training dataset on the instance
     val_path = f"{args.data_channel}/{args.val_dir}"       # directory of our validation dataset on the instance
